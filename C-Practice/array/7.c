@@ -12,15 +12,15 @@ int main()
 
     printf("Missing elements are:\n");
     for (j = 0; j < 9; j++) {
-        found = 0; // Reset the flag for each element in arr2
+        found = 0; 
         for (i = 0; i < n; i++) {
             if (arr2[j] == arr1[i]) {
-                found = 1; // Element found in arr1
+                found = 1; 
                 break;
             }
         }
         if (!found) {
-            printf("%d\n", arr2[j]); // Print missing element
+            printf("%d\n", arr2[j]); 
         }
     }
 

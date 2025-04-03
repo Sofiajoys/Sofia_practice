@@ -4,7 +4,7 @@ int main()
 {
     char str[20]= "Hello World";
     char ch='l';
-    const char* res = strchr(str,ch);
+    char* res = strchr(str,ch);
     if (res!=0)
     {
       printf("char %c found at position:%ld",ch, res - str);

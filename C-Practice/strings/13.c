@@ -1,10 +1,11 @@
 #include<stdio.h>
 int fact(int x)
 {
-    int a=x;
-    if(x!=0)
+    static int a=1;
+    static int i=1;
+    if(i<x)
     {
-        a*=x;
+        a*=1;
         fact(x--);
     }
     else
