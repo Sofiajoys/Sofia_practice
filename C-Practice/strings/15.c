@@ -21,7 +21,7 @@ int main()
       {
         sp++; 
       }
-      printf("%c ",str1[a]);
+      printf("%c",str1[a]);
       a++;
      
 }
