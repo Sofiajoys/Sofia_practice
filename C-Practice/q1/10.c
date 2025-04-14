@@ -1,9 +1,12 @@
 #include<stdio.h>
+#include<math.h>
+#define pi 3.14
 int main()
 {
-    int a=0,b=1,i;
-    a=a+b;
-    for(int i=0;i=21;i++)
-     i+=a;
-    printf("%d",i);
+    int r=5,a,p;
+    a=pi*r*r;
+    p=2*pi*r;
+    printf("area of circle is %d\n",a);
+    printf("perimeter of circle is %d",p);
+    return 0;
 }
