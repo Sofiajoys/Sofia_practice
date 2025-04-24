@@ -10,5 +10,5 @@ int main()
     scanf("%d",&a);
     printf("enter a number2:");
     scanf("%d",&b);
-    n=(*p1>*p2)?printf("%d",*p1):printf("%d",*p2);
+    n=(*p1>*p2)?printf("max is %d",*p1):printf("max is %d",*p2);
 }
