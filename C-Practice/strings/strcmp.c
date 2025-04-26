@@ -10,7 +10,7 @@ int main()
     fgets(str2,sizeof str2,stdin);
     a=strlen(str1)-1;
     b=strlen(str2)-1;
-    printf("%d\n%d\n",a,b);
+    printf("a= %d\nb= %d\n",a,b);
     if(a==b){
         for(int i=0;i<a;i++){
            if(str1[i]==str2[i]){
