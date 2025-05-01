@@ -17,7 +17,7 @@ void bubblesort(int a[],int n)
 }
 int main(void)
 {
-    int a[5]={5,2,9,6,4},n=5;
+    int a[6]={3,2,7,1,6,9},n=6;
     bubblesort(a,n);
     printf("after sorting: ");
     for(int i=0;i<=n-1;i++)

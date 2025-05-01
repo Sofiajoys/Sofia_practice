@@ -7,13 +7,12 @@ int main()
     scanf("%d",&n);
     printf("enter a num: ");
     scanf("%d",&num);
-    for(int i=0;num!=0;i++){
+    for(int i=1;num!=0;i++){
     rem=num%10;
     num=num/10;
     arm+=pow(rem,n);
-    
-    }
     printf("%d\n",arm);
+    }
     if(b==arm){
       printf("is an armstrong number");
     }

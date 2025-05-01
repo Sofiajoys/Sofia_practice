@@ -15,7 +15,7 @@ char *mystrcat(char *s1,  char *s2)
 }
 int main()
 {
-    char str1[20]="hello";
+    char str1[20]="hello ";
     char str2[20]="world";
     mystrcat(str1,str2);
     printf("%s",str1);

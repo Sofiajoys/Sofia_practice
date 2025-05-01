@@ -11,6 +11,6 @@ int main()
     printf("enter a string:");
     while((getchar())!='\n'&&getchar()!=EOF);
     fgets(s1.name,20,stdin);
-    printf("entered age is %d",s1.age);
+    printf("entered age is %d\n",s1.age);
     printf("entered string is: %s",s1.name);
 }

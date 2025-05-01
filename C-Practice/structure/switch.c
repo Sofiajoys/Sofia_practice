@@ -2,10 +2,10 @@
 int main()
 {
     int a,b,c;
-  in :  printf("select an option\n1: + \n2: -\n");
-    scanf("%d",&c);
     printf("enter two values");
     scanf("%d%d",&a,&b);
+  in :  printf("select an option\n1: + \n2: -\n");
+    scanf("%d",&c);
     switch(c){
         case 1:
           printf("addition:%d",a+b);

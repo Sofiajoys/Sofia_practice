@@ -9,7 +9,7 @@ int main()
         sum+=i;
         prod*=i;
     }
-    printf("%d ",sum);
-    printf("%d",prod);
+    printf("sum is %d ",sum);
+    printf("prod is %d",prod);
     return 0;
 }
