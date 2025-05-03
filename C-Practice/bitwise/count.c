@@ -6,11 +6,11 @@ int main()
   scanf("%d",&n);
   for(int i=0;i<32;i++)
   {
-    if((n&(1<<i))==0){
+    if((n&(1<<i))==1){
       count++;
       
     }
   }
-    printf("no of zeros:%d\n",count);
-    printf("no of ones:%d",32-count);
+    printf("no of zeros:%d\n",32-count);
+    printf("no of ones:%d",count);
  }
