@@ -9,6 +9,6 @@ int main()
         if((n&(1<<i))!=0)
         printf("%d is set",i);
         else
-        printf("%d is not set",i);
+        printf("%d",i);
     }
 }

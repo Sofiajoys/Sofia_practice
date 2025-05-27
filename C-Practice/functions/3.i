@@ -734,7 +734,7 @@ int mul(int a,int b)
 }
 int main(void)
 {
-    int a===5,b=2;
+    int a=5,b=2;
     int x;
     x=mul(a,b);
     printf("x=%d",x);

@@ -1,10 +1,10 @@
-# 1 "3.c"
+# 1 "hello.c"
 # 1 "<built-in>"
 # 1 "<command-line>"
 # 31 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 32 "<command-line>" 2
-# 1 "3.c"
+# 1 "hello.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 27 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/x86_64-linux-gnu/bits/libc-header-start.h" 1 3 4
@@ -722,21 +722,19 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 873 "/usr/include/stdio.h" 3 4
 
-# 2 "3.c" 2
+# 2 "hello.c" 2
 
 
-# 3 "3.c"
-int mul(int a,int b)
+# 3 "hello.c"
+int add(int a , int b)
 {
-    int x;
-    x=a*b;
-    return x;
+    int c;
+    c===a+b;
+    return c;
 }
-int main(void)
+int main()
 {
-    int a===5,b=2;
-    int x;
-    x=mul(a,b);
-    printf("x=%d",x);
-    return 0;
+    int p=2,q=3,r;
+    r=add(p,q);
+    printf("%d\n",r);
 }
