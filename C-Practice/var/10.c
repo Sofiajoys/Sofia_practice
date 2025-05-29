@@ -1,12 +1,11 @@
 #include<stdio.h>
 int main()
 {
-   int x=5;
-   fun(x);
-   printf("%d",x);
+    static int x=5;
+    fun(x);
 }
 fun(int x)
 {
     x=10;
-    return x;
+    printf("%d",x);
 }
