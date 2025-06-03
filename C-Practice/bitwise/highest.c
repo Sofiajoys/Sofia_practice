@@ -9,7 +9,7 @@ int main()
     if(n&(1<<i)){
       a=i;
       
+      printf("highest bit is %d\n",a);
     }
   }
-  printf("highest bit is %d",a);
 }

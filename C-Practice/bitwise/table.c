@@ -12,6 +12,5 @@ int table(int a)
 int main()
 {
     int a;
-    
     table(a);
 }
