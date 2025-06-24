@@ -6,4 +6,5 @@ int main()
     fp=fopen("file.txt","r");
     fgets(data,50,fp);
     printf("%s",data);
+    fclose(fp);
 }
