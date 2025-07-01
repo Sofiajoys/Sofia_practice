@@ -1,0 +1,23 @@
+#PCI-CACHE-1.0
+2 8086 464d 0 0 12th Gen Core Processor PCI Express x4 Controller #0
+2 8086 464f 0 0 12th Gen Core Processor Gaussian & Neural Accelerator
+2 8086 461d 0 0 Alder Lake Innovation Platform Framework Processor Participant
+2 8086 461e 0 0 Alder Lake-P Thunderbolt 4 USB Controller
+2 8086 4629 0 0 12th Gen Core Processor Host Bridge/DRAM Registers
+2 8086 463d 0 0 12th Gen Core Processor PCI Express x4 Controller #2
+2 8086 46a3 0 0 Alder Lake-P GT1 [UHD Graphics]
+2 10ec b852 0 0 RTL8852BE PCIe 802.11ax Wireless Network Controller
+2 8086 51c5 0 0 Alder Lake-P Serial IO I2C Controller #0
+2 8086 51c6 0 0 Alder Lake-P Serial IO I2C Controller #1
+2 8086 51c8 0 0 Alder Lake PCH-P High Definition Audio Controller
+2 8086 51e0 0 0 Alder Lake PCH HECI Controller
+2 8086 51e8 0 0 Alder Lake PCH Serial IO I2C Controller #0
+2 8086 51eb 0 0 Alder Lake PCH Serial IO I2C Controller #3
+2 8086 51ed 0 0 Alder Lake PCH USB 3.2 xHCI Host Controller
+2 8086 51ef 0 0 Alder Lake PCH Shared SRAM
+2 8086 5182 0 0 Alder Lake PCH eSPI Controller
+2 8086 51a3 0 0 Alder Lake PCH-P SMBus Host Controller
+2 8086 51a4 0 0 Alder Lake-P PCH SPI Controller
+2 8086 51b1 0 0 Alder Lake PCI Express x1 Root Port #10
+6 c 80 0 0 Serial bus controller
+2 15b7 5016 0 0 WD PC SN740 NVMe SSD 512GB (DRAM-less)

@@ -1,0 +1,52 @@
+step 1: create .c file
+step2 cross compile
+sofia@sofiajoys:~$ arm-linux-gnueabihf-gcc hello1.c -o hello
+step 3: copy hello binary to sd card
+connect sd card to pc
+df -h 		#to find mount path
+ex cp hello  /media/sofia/root
+eject sd card
+step 4: connect sd card to board
+step 5: change boot config pins to sd card   			#sd boot node 0 0 1 0
+step 6: stop at uboot
+step 7: run below commands to boot zimage and 
+-
+----------------------------------------------------------------------------------------------
+>  setenv mmcroot '/dev/mmcblk0p2 rootwait rw rootdelay=5 mem=256M'
+=> fatls mmc 0
+    35910   myd-y6ull-gpmi-weim.dtb
+  8598616   zImage
+            .Trash-1000/
+            System Volume Information/
+    36629   mys-6ull-14x14-gpmi-weim.dtb
+
+3 file(s), 2 dir(s)
+
+=> fatload mmc 0 0x83000000 zImage
+8598616 bytes read in 395 ms (20.8 MiB/s)
+=> fatload mmc 0 0x84000000 mys-6ull-14x14-gpmi-weim.dtb
+36629 bytes read in 23 ms (1.5 MiB/s)
+=> bootz 0x83000000 - 0x84000000
+Kernel image @ 0x83000000 [ 0x000000 - 0x833458 ]
+## Flattened Device Tree blob at 84000000
+   Booting using the fdt blob at 0x84000000
+   Using Device Tree in place at 84000000, end 8400bf14
+Modify /soc/bus@2200000/epdc@228c000:status disabled
+ft_system_setup for mx6
+
+---------------------------------------------------------------------------------------------
+step 8: login with login board with root
+step 9 : run hello binary
+-----------------------------------------------
+
+root@mys-6ull:~# root
+-sh: root: command not found
+root@mys-6ull:~# ls
+root@mys-6ull:~# pwd
+/home/root
+root@mys-6ull:~# sudo cp /a.out .
+root@mys-6ull:~# ls
+a.out
+root@mys-6ull:~# ./a.out
+Hello Worldroot@mys-6ull:~# 
+---------------------------------------------------
