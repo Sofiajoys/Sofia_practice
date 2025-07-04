@@ -1,47 +1,65 @@
-//node
 #include<stdio.h>
 #include<stdlib.h>
-struct node
-{
+struct node{
     int data;
-    struct node* next;
+    struct node *next;
 };
-//create new node
-struct node* newnode(int data)
+struct node *newnode(int data)
 {
-    struct node* temp =malloc(sizeof(struct node));
+    struct node *temp = (struct node*)malloc(sizeof(struct node));
     temp -> data = data;
     temp -> next = NULL;
     return temp;
 }
-//insert node
-struct node* insertfront(struct node* head,int data)
+//printing
+void print(struct node *head)
 {
-    struct node* temp = newnode(data);
-    temp -> next = head;
-    return temp;
-}
-void print(struct node* head)
-{
-    while(head)
+    struct node* temp = NULL;
+    temp = head;
+    while(temp != NULL)
     {
-        printf("%d -> ",head -> data);
-        head = head -> next;
+        printf("%d -> ",temp -> data);
+        temp = temp -> next;
     }
-printf("NULL \n");
+
+    printf("NULL");
+
 }
 int main()
 {
-    struct node *head=newnode(10);
-    head -> next = newnode(25);
-    head -> next -> next = newnode(35);
-    head -> next -> next -> next = newnode(55);
-    printf("original list: ");
+    struct node *temp = NULL,*head = NULL;
+    int n,value;
+    printf("enter no of nodes : ");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        printf("enter data in node %d : ",i+1);
+        scanf("%d",&value);
+        struct node *new = newnode(value);
+        if(head == NULL)
+        {
+            head = temp = new;
+        }
+        else{
+            temp -> next = new;
+            temp = temp -> next;
+        }
+    }
+    // call print
+    printf("linked list: ");
     print(head);
-    head=insertfront(head,5);
-    printf("after insertion: ");
+
+    printf("\nenter value to be inserted at begining : ");
+    scanf("%d",&value);
+    struct node *new = newnode(value);
+    new -> next = head;
+    head = new;
+
+    printf("after inserting : ");
     print(head);
+
     return 0;
+
 
 }
 
