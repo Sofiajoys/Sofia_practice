@@ -33,15 +33,15 @@ int main()
             temp = new;
         }
     }
-    //insert at end
-    printf("Enter value to insert at the end: ");
-    scanf("%d", &value);
-    struct node *newEnd = newnode(value);
-    temp -> next = newEnd;
-    temp = newEnd;
-    
+    //delete at beg
+    if (head != NULL) {
+        struct node *Delete = head;
+        head = head->next;
+        free(Delete);
+        printf("First node deleted\n");
+    }
     //printing
-    printf("After inserting linked list: ");
+    printf("After deleting linked list: ");
     temp = head;
     while(temp != NULL)
     {

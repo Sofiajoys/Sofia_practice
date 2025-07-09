@@ -15,7 +15,7 @@ struct node* newnode(int data)
 int main()
 {
     struct node *temp = NULL,*head = NULL;
-    int n,value;
+    int n,value,pos;
     printf("enter no of nodes: ");
     scanf("%d",&n);
     for(int i=0;i<n;i++)
@@ -33,15 +33,24 @@ int main()
             temp = new;
         }
     }
-    //insert at end
-    printf("Enter value to insert at the end: ");
-    scanf("%d", &value);
-    struct node *newEnd = newnode(value);
-    temp -> next = newEnd;
-    temp = newEnd;
-    
+    //delete at mid
+    printf("enter position to be delete: ");
+    scanf("%d",&pos);
+    if(head == NULL)
+    {
+        printf("list is empty\n"); 
+    }
+    else{
+        struct node *prev = head;
+        for (int i = 1; i < pos - 1 && prev != NULL; i++) {
+            prev = prev->next;
+        }
+        struct node* Delete = prev->next;
+        prev->next = Delete->next;
+        free(Delete);
+    }
     //printing
-    printf("After inserting linked list: ");
+    printf("After deleting linked list: ");
     temp = head;
     while(temp != NULL)
     {

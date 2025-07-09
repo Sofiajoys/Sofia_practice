@@ -15,7 +15,7 @@ struct node* newnode(int data)
 int main()
 {
     struct node *temp = NULL,*head = NULL;
-    int n,value;
+    int n,value,pos;
     printf("enter no of nodes: ");
     scanf("%d",&n);
     for(int i=0;i<n;i++)
@@ -33,12 +33,20 @@ int main()
             temp = new;
         }
     }
-    //insert at end
-    printf("Enter value to insert at the end: ");
+    //insert at mid
+    printf("enter position to be inserted: ");
+    scanf("%d",&pos);
+    printf("Enter value to insert at the specific position: ");
     scanf("%d", &value);
     struct node *newEnd = newnode(value);
-    temp -> next = newEnd;
-    temp = newEnd;
+
+    struct node *prev = head;
+        for (int i = 1; i < pos && prev != NULL; i++) 
+        {
+            prev = prev->next;
+        }
+    newEnd -> next = prev -> next;
+    prev -> next = newEnd;
     
     //printing
     printf("After inserting linked list: ");
