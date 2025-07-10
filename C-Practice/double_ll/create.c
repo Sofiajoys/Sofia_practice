@@ -17,7 +17,7 @@ struct node *newnode(int data)
 int main()
 {
     int data,n;
-    struct node *temp = NULL,*head = NULL;
+    struct node *temp = NULL, *tail = NULL,*head = NULL;
     printf("enter no of nodes:");
     scanf("%d",&n);
     for(int i=0;i<n;i++)
@@ -27,21 +27,21 @@ int main()
         struct node *new = newnode(data);
         if(head == NULL)
         {
-            head =temp = new;
+            head =tail = new;
         }
         else
         {
-            temp -> next = new;
-            new -> prev = temp;
-            temp = new;
+            tail -> next = new;
+            new -> prev = tail;
+            tail = new;
         }
     }
     printf("double linked list: ");
-     temp = head;
+     temp = tail;
     while(temp != NULL)
     {
-        printf("%d <-> ",temp -> data);
-        temp = temp -> next;
+        printf("%d <->",temp -> data);
+        temp = temp -> prev;
     }
     printf("NULL");
 }

@@ -47,6 +47,7 @@ int main()
         }
     newEnd -> next = prev -> next;
     prev -> next = newEnd;
+
     
     //printing
     printf("After inserting linked list: ");
