@@ -40,14 +40,25 @@ int main()
     {
         printf("list is empty\n"); 
     }
+    else if(pos == 1) {
+        struct node *del = head;
+        head = head->next;
+        free(del);
+    }
     else{
         struct node *prev = head;
-        for (int i = 1; i < pos - 1 && prev != NULL; i++) {
+        for (int i = 1; i < pos -1 && prev != NULL; i++) {
             prev = prev->next;
         }
+        if (prev == NULL || prev->next == NULL) {
+            printf("Position out of range\n");
+        } 
+        else
+        {
         struct node* Delete = prev->next;
         prev->next = Delete->next;
         free(Delete);
+        }
     }
     //printing
     printf("After deleting linked list: ");

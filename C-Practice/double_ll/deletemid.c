@@ -42,18 +42,28 @@ int main()
     {
         printf("list is empty\n"); 
     }
-    else{
-        struct node *prev = head;
-        for (int i = 1; i < pos && prev != NULL; i++) {
-            prev = prev->next;
+    else if (pos == 1) {
+        // Delete head
+        struct node* del = head;
+        head = head->next;
+        if (head != NULL)
+            head->prev = NULL;
+        free(del);
+    }
+    else {
+        struct node *curr = head;
+        for(int i = 1; i < pos && curr != NULL; i++) {
+            curr = curr->next;
         }
-        struct node* Delete = prev->next;
-        prev->next = Delete->next;
-        if (Delete->next != NULL)
-        {
-            Delete->next->prev = prev;
+        if(curr == NULL) {
+            printf("Position out of range\n");
+        } else {
+            if(curr->prev != NULL)
+                curr->prev->next = curr->next;
+            if(curr->next != NULL)
+                curr->next->prev = curr->prev;
+            free(curr);
         }
-        free(Delete);
     }
     //printing
     printf("After deleting linked list: ");
