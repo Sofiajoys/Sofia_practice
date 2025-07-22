@@ -2,7 +2,7 @@
 int main()
 {
     FILE* fp;
-    char data[50] = "hello world\ngood morning";
+    char data[50] = "hello world\ngood evening";
     fp=fopen("data.txt","w");
     if(fp == NULL)
     {
@@ -12,7 +12,6 @@ int main()
     {
         printf("file is opened\n");
         fputs(data,fp);
-        fclose(fp);
         printf("data written in file\n");
         printf("file is closed\n");
     }
