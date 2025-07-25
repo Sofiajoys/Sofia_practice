@@ -10,7 +10,7 @@ int main()
         }
         for(k=1;k<=i;k++)
         {
-            if(i==1||i==n||k==1||k==n+i)
+            if(i==1||i==n||k==1||k==i-1)
             printf("%d ",k);
         }
         printf("\n");
