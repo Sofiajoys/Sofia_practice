@@ -10,8 +10,14 @@ int main()
         }
         for(k=1;k<=i;k++)
         {
-            if(i==1||i==n||k==1||k==i-1)
-            printf("%d ",k);
+            if(i==k||i==n||k==1)
+            {
+                printf("* ");
+            }
+             else
+             {
+                 printf("  ");
+             }
         }
         printf("\n");
     }
