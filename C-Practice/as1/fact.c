@@ -6,5 +6,5 @@ int main()
     {
         fact = fact * i;
     }
-    printf("%d",fact);
+    printf("the fact of a num is: %d",fact);
 }
