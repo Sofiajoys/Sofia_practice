@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int n,i;
+    int n;
     int a[5];
     printf("enter the elements: ");
     for(int i=0;i<5;i++)

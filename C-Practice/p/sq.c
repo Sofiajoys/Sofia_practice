@@ -7,15 +7,23 @@ int main()
 
 	printf("enter rows\n");
 	scanf("%d",&n);
-
-	for(i=1;i<=2*n;i++)
+	
+	int x=64;
+//	for(int m=65;m<=91;m++)
+	
+	for(i=1;i<=n;i++)
 	{
-		for(j=1;j<=n;j++)
+		for(j=x+1;j<=n+x;j++)
 		{
 
-			printf("* ");
+			if((j>=65&&j<=90)||(j>=97&&j<=122))
+			printf("%c ",j);
+			else
+				printf("  ");
+			
 
 		}
+		x=x+n;
 printf("\n");
 	}
 
