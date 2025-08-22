@@ -10,20 +10,20 @@ int main()
     p1=&m;
     p2=&fx;
     p3=&cht;
-    printf("address of m:%p\n",&m);
-    printf("address of fs:%p\n",&fx);
-    printf("address of cht:%p\n",&cht);
+    printf("address of m:%p\n",&m);//p1
+    printf("address of fs:%p\n",&fx);//p2
+    printf("address of cht:%p\n",&cht);//p3
     printf("\n");
-    printf(" value at address of m:%d\n",*(&m));
-    printf(" value at address of fx:%f\n",*(&fx));
-    printf(" value at address of cht:%c\n",*(&cht));
+    printf(" value at address of m:%d\n",*(&m));//300
+    printf(" value at address of fx:%f\n",*(&fx));//300.600006
+    printf(" value at address of cht:%c\n",*(&cht));//'z'
     printf("\n");
     printf("address of m:%p\n",p1);
     printf("address of fx:%p\n",p2);
     printf("address of cht:%p\n",p3);
     printf("\n");
-    printf("value at address of m:%d\n",*p1);
-    printf("value at address of fx:%f\n",*p2);
-    printf("value at address of cht:%c\n",*p3);
+    printf("value at address of m:%d\n",*p1);//300
+    printf("value at address of fx:%f\n",*p2);//300.600006
+    printf("value at address of cht:%c\n",*p3);//'z'
     return 0;
 }
