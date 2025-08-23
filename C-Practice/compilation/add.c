@@ -7,6 +7,7 @@ int add(int p,int q)
     return r;
 }
 
+
 int main()
 {
     int a=2,b=three,c;

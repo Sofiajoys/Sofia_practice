@@ -6,8 +6,8 @@ int main()
     int i;
     for(int i=0;str[i]!='\0';i++){
         if(str[i]==c){
-            printf("%d",i);
-            break;
+            printf("%d,",i);
+            
     }
 }
 return 0;
