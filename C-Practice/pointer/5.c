@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int max,a,b,c,n;
+    int a,b,c,n;
     int *p1;
     int *p2;
     int *p3;
