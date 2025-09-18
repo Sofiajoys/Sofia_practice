@@ -1,8 +1,8 @@
 #include<stdio.h>
-auto int a=5;
+register int a=5;
 int main()
 {
-    register int a=10;
+    extern int a=10;
     printf("%d",a);
     
 }
