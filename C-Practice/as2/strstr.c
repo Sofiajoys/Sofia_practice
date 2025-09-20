@@ -18,7 +18,7 @@ char *mystrstr(char str[],char sub[])
 int main()
 {
 char str[]="sofia joys";
-char sub[]="world";
+char sub[]="joys";
 char *result = mystrstr(str,sub);
 if(result != NULL)
 {
