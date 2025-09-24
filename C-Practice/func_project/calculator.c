@@ -40,7 +40,9 @@ int main()
         break;
 
         case 4:
-        exit(2);
+        printf("thank you\n");
+        return 0;
+        break;
 
         default:
         printf("invalid operation.\n");
