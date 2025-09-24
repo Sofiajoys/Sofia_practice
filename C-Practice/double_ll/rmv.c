@@ -38,12 +38,12 @@ int main()
     }
     //duplicates remove
     struct node *temp = head;
-    int i=1;
-    while(i < n)
+    while(temp != NULL)
     {
-        if(i == temp -> data)
+        struct node *run = temp -> next;
+        while(run != NULL)
         {
-            printf("%d are duplicates",temp -> data);
+            if(temp -> data == run -> data)
         }
         temp = temp -> next;
         i++;

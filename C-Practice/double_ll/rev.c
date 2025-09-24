@@ -14,11 +14,12 @@ struct node *newnode(int data)
     temp -> next = NULL;
     return temp;
 }
-void *reverse(struct node **headref)
+void *reverse(struct node *head,int n)
 {
-    struct node *temp = NULL;
-    struct node *current = *headref;
+    struct node *left = head;
+    struct node *right = head;
     //swap
+    while(right)
     
 
 }

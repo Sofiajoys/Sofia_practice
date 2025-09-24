@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/calculator.h
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/add.c
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/div.c
+stdio.h
+-
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/even.c
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/fibonacci.c
+stdio.h
+-
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/mul.c
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/odd.c
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/prime.c
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/src/sub.c
+
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/test/calculator.c
+stdio.h
+-
+calculator.h
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/calc/test/calculator.h
+

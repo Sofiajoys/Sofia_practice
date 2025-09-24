@@ -15,5 +15,5 @@ int min = arr[0];
                 min = arr[i];
             }
         }
-        printf("%d",min);
+        printf("%d\n",min);
 }

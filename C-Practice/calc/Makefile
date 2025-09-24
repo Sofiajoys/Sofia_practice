@@ -6,11 +6,11 @@ add.o:add.c
 sub.o:sub.c
 	gcc -c sub.c
 mul.o:mul.c
-	gcc -c mul.c
+	gcc -c mul.c 
 div.o:div.c
 	gcc -c div.c
 even.o:even.c
-	gcc -c even.c
+	gcc -c even.c 
 odd.o:odd.c
 	gcc -c odd.c
 prime.o:prime.c
