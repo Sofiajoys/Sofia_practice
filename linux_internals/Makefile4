@@ -1,0 +1,12 @@
+all: execvp
+
+execvp.o: execvp.c
+	gcc -c execvp.c
+
+execvp: execvp.o
+	gcc execvp.o -o execvp
+
+clean:
+	rm -rf *.o execvp
+
+

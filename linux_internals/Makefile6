@@ -1,0 +1,11 @@
+all: execve
+
+execve.o: execve.c
+	gcc -c execve.c
+
+execve: execve.o
+	gcc execve.o -o execve
+
+clean:
+	rm -rf *.o execve
+

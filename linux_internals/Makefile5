@@ -1,0 +1,11 @@
+all: execle
+
+execle.o: execle.c
+	gcc -c execle.c
+
+execle: execle.o
+	gcc execle.o -o execle
+
+clean:
+	rm -rf *.o execle
+

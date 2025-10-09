@@ -1,0 +1,11 @@
+all: execlp
+
+execlp.o: execlp.c
+	gcc -c execlp.c
+
+execlp: execlp.o
+	gcc execlp.o -o execlp
+
+clean:
+	rm -rf *.o execlp
+
