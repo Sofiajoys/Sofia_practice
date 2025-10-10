@@ -1,0 +1,3 @@
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/cmake4/build/CMakeFiles/rebuild_cache.dir
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/cmake4/build/CMakeFiles/edit_cache.dir
+/home/sofia/Desktop/Sofia_practice/C-Practice/cmake/cmake4/build/CMakeFiles/hello.dir
