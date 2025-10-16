@@ -9,7 +9,7 @@ int main() {
 
     if (d) {
         while ((dir = readdir(d)) != NULL) {
-            printf("%s  ", dir->d_name);
+            printf("%s\n", dir->d_name);
         }
         closedir(d);
     } else {
