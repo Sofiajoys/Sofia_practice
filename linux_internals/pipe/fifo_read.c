@@ -4,31 +4,15 @@
 #include <sys/stat.h>
 
 int main() {
-    const char *fifo = "/tmp/myfifo";  // same name used in writer
-
-    // Create the FIFO (ignore error if it already exists)
-    mkfifo(fifo, 0666);
-
-    printf("Opening FIFO for reading...\n");
+    const char *fifo = "/tmp/myfifo";
+    char buffer[100];
 
     int fd = open(fifo, O_RDONLY);
-    if (fd == -1) {
-        perror("open");
-        return 1;
-    }
-
-    char buffer[100];
-    int bytes = read(fd, buffer, sizeof(buffer) - 1);
-
-    if (bytes > 0) {
-        buffer[bytes] = '\0'; // null-terminate string
-        printf("Received: %s\n", buffer);
-    } else {
-        printf("No data received or pipe closed.\n");
-    }
-
+    read(fd, buffer, sizeof(buffer));
     close(fd);
-    printf("FIFO closed.\n");
+
+    printf("Message read from FIFO: %s\n", buffer);
     return 0;
 }
+
 
