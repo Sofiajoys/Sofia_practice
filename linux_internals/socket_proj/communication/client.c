@@ -24,7 +24,7 @@ int main() {
     serv_addr.sin_port = htons(PORT);
 
     // Convert IP
-    if (inet_pton(AF_INET, "192.168.68.143", &serv_addr.sin_addr) <= 0) {
+    if (inet_pton(AF_INET, "192.168.68.133", &serv_addr.sin_addr) <= 0) {
         perror("Invalid address");
         exit(1);
     }
