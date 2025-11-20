@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main()
+{
+    int arr[6]={1,2,3,4,8,6};
+    int count=0;
+    for(int i=0;i<6;i++)
+    {
+        if((arr[i]%2)==0)
+        {
+            count++;
+        }
+    }
+    printf("even no's are: %d\n",count);
+    printf("odd no's are: %d",6-count);
+}
