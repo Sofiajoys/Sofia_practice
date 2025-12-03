@@ -2,6 +2,7 @@
 int main()
 {
     int a,n,i;
+    int temp;
     printf("enter size of array:");
     scanf("%d",&a);
     int arr[a];
@@ -9,8 +10,12 @@ int main()
     for(int i=0;i<a;i++)
     scanf("%d",&arr[i]);
     printf("after rev: ");
-    for(int i=a-1;i>=0;i--)
+    for(int i=0;i<a/2;i++)
     {
-        printf(" %d ",arr[i]);
+        temp=arr[a-1-i];
+        arr[a-1-i]=arr[i];
+        arr[i]=temp;
     }
+    for(int i=0;i<a;i++)
+    printf(" %d ",arr[i]);
 }
