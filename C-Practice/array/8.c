@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-    int a,n,i;
+    int a,n,i,m;
     printf("enter size of array:");
     scanf("%d",&a);
     int arr[a];
@@ -9,10 +9,14 @@ int main()
     for(int i=0;i<a;i++)
     scanf("%d",&arr[i]);
     n=arr[0];
+    m=arr[0];
     for(int i=0;i<a;i++){
         if(n<arr[i])
-          n=arr[i];
+        {
+            m=n;
+            n=arr[i];
+        }
     
     }
-    printf("largest no is %d",n);
+    printf("2nd largest no is %d",m);
 }
