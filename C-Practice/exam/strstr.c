@@ -15,11 +15,11 @@ int main()
         }
         if(*q=='\0')
         {
-            printf("found: %s",str2);
+            printf("%s : found",str2);
             return 0;
         }
         p++;
+        
     }
-        printf("not found\n");
-    
+    printf("not found");
 }

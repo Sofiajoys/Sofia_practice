@@ -1,5 +1,5 @@
 #include<stdio.h>
-int flag=0;
+volatile int flag=0;
 int main()
 {
     printf("start\n");
