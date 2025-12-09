@@ -10,13 +10,19 @@ int main()
     {
         scanf("%d",&arr[i]);
     }
-    for(int i=0;i<n/2;i++)
+    for(int i=0;i<n;i++)
     {
-        int temp=arr[n-1-i];
-        arr[n-1-i]=arr[i];
-        arr[i]=temp;
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i]>arr[j])
+            {
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
     }
-    printf("after reversing: ");
+    printf("after sorting: ");
     for(int i=0;i<n;i++)
     printf("%d ",arr[i]);
 }
