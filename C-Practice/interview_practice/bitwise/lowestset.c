@@ -1,14 +1,14 @@
 #include<stdio.h>
 int main()
 {
-  int n,a;
+  int n;
   printf("enter a number");
   scanf("%d",&n);
-  for(int i=31;i>=0;i--)
+  for(int i=0;i<32;i++)
   {
-    if(n&(1<<i))
+    if((n&(1<<i))!=0)
     {
-      printf("highest set bit is %d\n",i);
+      printf("lowest set bit is %d\n",i);
       break;
     }
   }
