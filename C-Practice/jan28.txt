@@ -1,0 +1,14 @@
+Implement DHT11 using qcc744M 
+I have done:
+
+1. Initialized board & GPIO
+
+2. Sent a start signal to DHT11
+
+3. Wait for sensor response
+
+4. Read 40 timing-based bits
+
+5. Convert bits → temperature & humidity
+
+
