@@ -1,0 +1,76 @@
+i have done board to board communication using spi
+master code:
+#include "qcc74x_spi.h"
+#include "qcc74x_mtimer.h"
+#include "board.h"
+#include <stdio.h>
+
+struct qcc74x_device_s *spi0;
+
+int main(void)
+{
+    uint8_t tx_buf[2] = {'H', 'I'};
+    uint8_t rx_buf[2] = {0};
+
+    board_init();
+    board_spi0_gpio_init();
+
+    spi0 = qcc74x_device_get_by_name("spi0");
+
+    struct qcc74x_spi_config_s spi_cfg = {
+        .freq = 500000,
+        .role = SPI_ROLE_MASTER,
+        .mode = SPI_MODE0,
+        .data_width = SPI_DATA_WIDTH_8BIT
+    };
+
+    qcc74x_spi_init(spi0, &spi_cfg);
+
+    printf("SPI MASTER READY\r\n");
+
+    while (1) {
+        qcc74x_spi_poll_exchange(spi0, tx_buf, rx_buf, 2);
+
+        printf("Sent: HI | Received: %c%c\r\n",
+               rx_buf[0], rx_buf[1]);
+
+        qcc74x_mtimer_delay_ms(2000);
+    }
+}
+
+
+slave code:
+#include "qcc74x_spi.h"
+#include "board.h"
+#include <stdio.h>
+
+struct qcc74x_device_s *spi0;
+
+int main(void)
+{
+    uint8_t tx_buf[2] = {'O', 'K'};
+    uint8_t rx_buf[2] = {0};
+
+    board_init();
+    board_spi0_gpio_init();
+
+    spi0 = qcc74x_device_get_by_name("spi0");
+
+    struct qcc74x_spi_config_s spi_cfg = {
+        .freq = 500000,          // ignored in slave
+        .role = SPI_ROLE_SLAVE,
+        .mode = SPI_MODE0,
+        .data_width = SPI_DATA_WIDTH_8BIT
+    };
+
+    qcc74x_spi_init(spi0, &spi_cfg);
+
+    printf("SPI SLAVE READY\r\n");
+
+    while (1) {
+        qcc74x_spi_poll_exchange(spi0, tx_buf, rx_buf, 2);
+
+        printf("Received: %c%c\r\n", rx_buf[0], rx_buf[1]);
+    }
+}
+
