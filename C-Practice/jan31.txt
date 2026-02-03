@@ -1,4 +1,0 @@
-i have done c programming in bitwise
-
-LCD display using qcc744M for i2c LCD 
-dht11 data should be displayed on LCD

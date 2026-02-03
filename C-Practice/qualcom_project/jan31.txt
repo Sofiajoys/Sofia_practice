@@ -1,0 +1,116 @@
+i have done c programming in bitwise
+
+LCD display using qcc744M for i2c LCD 
+dht11 data should be displayed on LCD
+
+/*code for DHT11*/
+#include <stdio.h>
+#include <string.h>
+#include "board.h"
+#include "qcc74x_gpio.h"
+#include "qcc74x_i2c.h"
+#include "qcc74x_mtimer.h"
+
+/* -------- CONFIG -------- */
+#define DHT_PIN GPIO_PIN_1
+#define LCD_ADDR 0x27
+
+#define BL  0x08
+#define EN  0x04
+#define RS  0x01
+
+struct qcc74x_device_s *gpio;
+struct qcc74x_device_s *i2c0;
+
+/* -------- LCD -------- */
+void lcd_wr(uint8_t d)
+{
+    struct qcc74x_i2c_msg_s m = { LCD_ADDR, 0, &d, 1 };
+    qcc74x_i2c_transfer(i2c0, &m, 1);
+}
+
+void lcd_pulse(uint8_t d)
+{
+    lcd_wr(d | EN);
+    qcc74x_mtimer_delay_us(1);
+    lcd_wr(d & ~EN);
+    qcc74x_mtimer_delay_us(50);
+}
+
+void lcd_send(uint8_t v, uint8_t rs)
+{
+    uint8_t d;
+    d = (v & 0xF0) | BL | rs; lcd_pulse(d);
+    d = (v << 4)  | BL | rs; lcd_pulse(d);
+}
+
+void lcd_cmd(uint8_t c)  { lcd_send(c, 0); qcc74x_mtimer_delay_ms(2); }
+void lcd_dat(uint8_t d)  { lcd_send(d, RS); }
+void lcd_str(char *s)    { while (*s) lcd_dat(*s++); }
+
+void lcd_init(void)
+{
+    qcc74x_mtimer_delay_ms(50);
+    lcd_send(0x33,0); lcd_send(0x32,0);
+    lcd_cmd(0x28); lcd_cmd(0x0C);
+    lcd_cmd(0x06); lcd_cmd(0x01);
+}
+
+/* -------- DHT11 -------- */
+int dht_read(uint8_t d[5])
+{
+    uint8_t i,j; uint32_t c;
+    memset(d,0,5);
+
+    qcc74x_gpio_init(gpio,DHT_PIN,GPIO_OUTPUT|GPIO_PULLUP);
+    qcc74x_gpio_reset(gpio,DHT_PIN);
+    qcc74x_mtimer_delay_ms(18);
+    qcc74x_gpio_set(gpio,DHT_PIN);
+    qcc74x_mtimer_delay_us(30);
+    qcc74x_gpio_init(gpio,DHT_PIN,GPIO_INPUT|GPIO_PULLUP);
+
+    while(qcc74x_gpio_read(gpio,DHT_PIN));
+    while(!qcc74x_gpio_read(gpio,DHT_PIN));
+    while(qcc74x_gpio_read(gpio,DHT_PIN));
+
+    for(i=0;i<5;i++)
+        for(j=0;j<8;j++){
+            while(!qcc74x_gpio_read(gpio,DHT_PIN));
+            c=0;
+            while(qcc74x_gpio_read(gpio,DHT_PIN)){
+                qcc74x_mtimer_delay_us(1); c++;
+            }
+            d[i]<<=1; if(c>50) d[i]|=1;
+        }
+
+    return ((d[0]+d[1]+d[2]+d[3])==d[4]) ? 0 : -1;
+}
+
+/* -------- MAIN -------- */
+int main(void)
+{
+    uint8_t d[5];
+    char buf[16];
+
+    board_init();
+    board_i2c0_gpio_init();
+
+    gpio = qcc74x_device_get_by_name("gpio");
+    i2c0 = qcc74x_device_get_by_name("i2c0");
+    qcc74x_i2c_init(i2c0, 100000);
+
+    lcd_init();
+
+    while (1) {
+        if (dht_read(d) == 0) {
+            lcd_cmd(0x01);
+            sprintf(buf,"Hum:%d%%",d[0]); lcd_str(buf);
+            lcd_cmd(0xC0);
+            sprintf(buf,"Temp:%dC",d[2]); lcd_str(buf);
+        } else {
+            lcd_cmd(0x01);
+            lcd_str("DHT Error");
+        }
+        qcc74x_mtimer_delay_ms(2000);
+    }
+}
