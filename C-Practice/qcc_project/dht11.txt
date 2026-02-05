@@ -1,0 +1,70 @@
+//dht11 sensor using GPIO on QCC744M
+code:
+
+#include "qcc74x_gpio.h"
+#include "qcc74x_mtimer.h"
+#include "board.h"
+#include <stdio.h>
+
+#define DHT11_PIN GPIO_PIN_1
+
+struct qcc74x_device_s *gpio;
+
+int main(void)
+{
+    uint8_t data[5] = {0};
+    uint8_t i, j;
+    uint32_t count;
+
+    board_init();
+    gpio = qcc74x_device_get_by_name("gpio");
+
+    printf("Simple DHT11 example\r\n");
+
+    while (1) {
+
+        qcc74x_gpio_init(gpio, DHT11_PIN, GPIO_OUTPUT | GPIO_PULLUP);
+        qcc74x_gpio_reset(gpio, DHT11_PIN);
+        qcc74x_mtimer_delay_ms(18);
+        qcc74x_gpio_set(gpio, DHT11_PIN);
+        qcc74x_mtimer_delay_us(30);
+
+
+        qcc74x_gpio_init(gpio, DHT11_PIN, GPIO_INPUT | GPIO_PULLUP);
+
+
+        while (qcc74x_gpio_read(gpio, DHT11_PIN));
+        while (!qcc74x_gpio_read(gpio, DHT11_PIN));
+        while (qcc74x_gpio_read(gpio, DHT11_PIN));
+
+
+        for (i = 0; i < 5; i++) {
+            for (j = 0; j < 8; j++) {
+
+                while (!qcc74x_gpio_read(gpio, DHT11_PIN));
+
+                count = 0;
+                while (qcc74x_gpio_read(gpio, DHT11_PIN)) {
+                    qcc74x_mtimer_delay_us(1);
+                    count++;
+                }
+
+                data[i] <<= 1;
+                if (count > 40) {
+                    data[i] |= 1;
+                }
+            }
+        }
+
+
+        if ((data[0] + data[1] + data[2] + data[3]) == data[4]) {
+            printf("Humidity = %d %%\r\n", data[0]);
+            printf("Temperature = %d C\r\n", data[2]);
+        } else {
+            printf("Checksum error\r\n");
+        }
+
+        qcc74x_mtimer_delay_ms(2000);
+    }
+}
+

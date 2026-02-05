@@ -1,0 +1,46 @@
+I have done led blinking using GPIO in QCC744M (baremetal coding)
+
+code:
+//led blinking(baremetal)
+
+#include <stdint.h>
+
+#define GPIO_CFG1_ADDR   0x200008C8UL
+#define GPIO_CFG1   (*(volatile uint32_t *)GPIO_CFG1_ADDR)
+
+/*static void delay(volatile uint32_t count)
+{
+    while (count--) {
+        __asm volatile ("nop");
+    }
+}*/
+
+void delay(volatile uint32_t count)
+{
+    volatile uint32_t dummy = 0;
+
+    while (count--) {
+        dummy++;
+    }
+}
+
+
+int main(void)
+{
+    /* GPIO1 configuration */
+    GPIO_CFG1 =
+        (1U << 30) |    /* SWGPIO function */
+        (1U  << 8) |    /* Output enable */
+        (1U  << 6) |    /* Strong drive */
+        (3U  << 2);     /* Input enable */
+
+    while (1) {
+            /* LED ON (GPIO1 HIGH) */
+            GPIO_CFG1 = (1U << 25);   /* reg_gpio_1_set */
+            delay(500);
+
+            /* LED OFF (GPIO1 LOW) */
+            GPIO_CFG1 = (1U << 26);   /* reg_gpio_1_clr */
+            delay(500);
+        }
+}
