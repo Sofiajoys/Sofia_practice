@@ -1,0 +1,76 @@
+//code for RGB LED without AQI
+#include <stdint.h>
+
+#define GPIO_CFG1 (*(volatile uint32_t *)0x200008C8)  // RED
+#define GPIO_CFG2 (*(volatile uint32_t *)0x200008CC)  // GREEN
+#define GPIO_CFG3 (*(volatile uint32_t *)0x200008D0)  // BLUE
+
+void delay(volatile uint32_t d)
+{
+    while(d--);
+}
+
+/* Configure one GPIO as SWGPIO output */
+static void gpio_init(volatile uint32_t *gpio)
+{
+    uint32_t reg = *gpio;
+
+    /* Function select = SWGPIO */
+    reg &= ~(0x1F << 8);
+    reg |=  (0x0B << 8);
+
+    /* Output value mode */
+    reg &= ~(3 << 30);
+
+    /* Output enable */
+    reg |= (1 << 6);
+
+    /* Drive strength = strong */
+    reg &= ~(3 << 2);
+    reg |=  (3 << 2);
+
+    /* Disable input, PU, PD, Schmitt */
+    reg &= ~((1 << 0) | (1 << 1) | (1 << 4) | (1 << 5));
+
+    *gpio = reg;
+}
+
+int main(void)
+{
+    /* Initialize RGB pins */
+    gpio_init(&GPIO_CFG1);   // RED
+    gpio_init(&GPIO_CFG2);   // GREEN
+    gpio_init(&GPIO_CFG3);   // BLUE
+
+    while(1)
+    {
+        /* RED */
+        GPIO_CFG1 |= (1 << 24);
+        delay(20000000);
+        GPIO_CFG1 &= ~(1 << 24);
+
+        /* GREEN */
+        GPIO_CFG2 |= (1 << 24);
+        delay(20000000);
+        GPIO_CFG2 &= ~(1 << 24);
+
+        /* BLUE */
+        GPIO_CFG3 |= (1 << 24);
+        delay(20000000);
+        GPIO_CFG3 &= ~(1 << 24);
+
+        /* WHITE (R + G + B) */
+        GPIO_CFG1 |= (1 << 24);
+        GPIO_CFG2 |= (1 << 24);
+        GPIO_CFG3 |= (1 << 24);
+        delay(30000000);
+
+        /* OFF */
+        GPIO_CFG1 &= ~(1 << 24);
+        GPIO_CFG2 &= ~(1 << 24);
+        GPIO_CFG3 &= ~(1 << 24);
+        delay(30000000);
+    }
+}
+
+
