@@ -28,5 +28,5 @@ int main()
     arr[n+i]=arr2[i];
     printf("merged array: ");
     for(int i=0;i<n+m;i++)
-    printf("%d",arr[i]);
+    printf("%d ",arr[i]);
 }

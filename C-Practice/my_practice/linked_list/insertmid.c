@@ -22,6 +22,15 @@ int main()
     {
         printf("enter value for node %d: ",i+1);
         scanf("%d",&value);
-        struct node *new=()
+        struct node *new=newnode(value);
+        if(head==NULL)
+        {
+            head=new;
+            temp=head;
+        }
+        else 
+        {
+            temp->next=new;
+            temp=temp->next;
+        }
     }
-}

@@ -20,8 +20,28 @@ int main()
     scanf("%d",&n);
     for(int i=0;i<n;i++)
     {
-        printf("enter value for node %d: ",i+1);
+        printf("enter data for node %d: ",i+1);
         scanf("%d",&value);
-        struct node *new=()
+        struct node *new=newnode(value);
+        if(head==NULL)
+        {
+            head=new;
+            temp=head;
+        }
+        else 
+        {
+            temp->next=new;
+            temp=temp->next;
+        }
     }
+    //print
+    printf("linked list: ");
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d -> ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+
 }

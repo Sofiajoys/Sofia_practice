@@ -8,6 +8,6 @@ int main()
     arr[2]=&c;
     for(int i=0;i<3;i++)
     {
-        printf("%d",*arr[i]);
+        printf("%d ",*arr[i]);
     }
 }

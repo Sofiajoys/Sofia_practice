@@ -10,7 +10,5 @@ int main()
         len++;
         p++;
     }
-    printf("len: %d",len);
-
-    
+    printf("len: %d",len); 
 }
