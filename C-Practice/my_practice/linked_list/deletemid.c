@@ -34,22 +34,32 @@ int main()
             temp=temp->next;
         }
     }
-    //insert at end
-    int val;
-    printf("enter a value to insert: ");
-    scanf("%d",&val);
-    struct node *insert=newnode(val);
-    if(head!=NULL)
+    //delete at mid
+    struct node *prev=NULL;
+    struct node *del=head;
+    int pos;
+    printf("enter a pos: ");
+    scanf("%d",&pos);
+    for(int i=1;i<pos && del!=NULL;i++)
     {
-        temp->next=insert;
-        temp=insert;
+        prev=del;
+        del=del->next;
+    }
+    if(del==NULL)
+    {
+        printf("invalid position");
+    }
+    else 
+    {
+        prev->next=del->next;
+        free(del);
     }
     //print
-    printf("Linked list: ");
+    printf("Linked list");
     temp=head;
     while(temp!=NULL)
     {
-        printf("%d ->",temp->data);
+        printf("%d->",temp->data);
         temp=temp->next;
     }
     printf("\n");

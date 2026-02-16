@@ -34,22 +34,23 @@ int main()
             temp=temp->next;
         }
     }
-    //insert at end
-    int val;
-    printf("enter a value to insert: ");
-    scanf("%d",&val);
-    struct node *insert=newnode(val);
-    if(head!=NULL)
+    //delete at beg
+    if(head==NULL)
     {
-        temp->next=insert;
-        temp=insert;
+        printf("list is empty");
+    }
+    else 
+    {
+        struct node *temp=head;
+        head=head->next;
+        free(temp);
     }
     //print
     printf("Linked list: ");
     temp=head;
     while(temp!=NULL)
     {
-        printf("%d ->",temp->data);
+        printf("%d->",temp->data);
         temp=temp->next;
     }
     printf("\n");

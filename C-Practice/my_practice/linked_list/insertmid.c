@@ -34,3 +34,34 @@ int main()
             temp=temp->next;
         }
     }
+    //insert at mid
+    int val,pos;
+    printf("enter a value: ");
+    scanf("%d",&val);
+    printf("enter a position: ");
+    scanf("%d",&pos);
+    struct node *insert=newnode(val);
+    temp=head;
+    for(int i=0;i<pos-1 && temp!=NULL;i++)
+    {
+        temp=temp->next;
+    }
+    if(temp==NULL)
+    {
+        printf("invalid position");
+    }
+    else 
+    {
+        insert->next=temp->next;
+        temp->next=insert;
+    }
+    //print
+    printf("Linked list: ");
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d->",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+}
