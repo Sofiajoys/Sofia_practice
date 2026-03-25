@@ -33,7 +33,7 @@ int main()
             temp=temp->next;
         }
     }
-    //insert end
+    //insert mid
     int value,pos;
     printf("enter value: ");
     scanf("%d",&value);
