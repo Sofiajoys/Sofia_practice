@@ -7,9 +7,8 @@ int main()
   for(int i=0;i<32;i++)
   {
     if((n&(1<<i))!=0){
-      a=i;
+      printf("lowest bit is %d ",i);
       break;
     }
   }
-  printf("lowest bit is %d",a);
 }
